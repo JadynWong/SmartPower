@@ -36,6 +36,7 @@ using Volo.Abp.UI.Navigation.Urls;
 using Volo.Abp.UI;
 using Volo.Abp.UI.Navigation;
 using Volo.Abp.VirtualFileSystem;
+using Volo.Abp.VirtualFileExplorer.Web;
 
 namespace SmartPower.Web
 {
@@ -52,6 +53,7 @@ namespace SmartPower.Web
         typeof(AbpAspNetCoreSerilogModule),
         typeof(AbpSwashbuckleModule)
         )]
+    [DependsOn(typeof(AbpVirtualFileExplorerWebModule))]
     public class SmartPowerWebModule : AbpModule
     {
         public override void PreConfigureServices(ServiceConfigurationContext context)
