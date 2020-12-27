@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="EasyAbp.Abp.SettingUi.Application" Version="1.2.1" />
     <PackageReference Include="Volo.Abp.Account.Application" Version="4.0.2" />
     <PackageReference Include="Volo.Abp.Identity.Application" Version="4.0.2" />
     <PackageReference Include="Volo.Abp.PermissionManagement.Application" Version="4.0.2" />

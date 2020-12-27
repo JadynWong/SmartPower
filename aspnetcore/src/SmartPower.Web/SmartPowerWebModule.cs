@@ -37,6 +37,7 @@ using Volo.Abp.UI;
 using Volo.Abp.UI.Navigation;
 using Volo.Abp.VirtualFileSystem;
 using Volo.Abp.VirtualFileExplorer.Web;
+using EasyAbp.Abp.SettingUi.Web;
 
 namespace SmartPower.Web
 {
@@ -45,15 +46,16 @@ namespace SmartPower.Web
         typeof(SmartPowerApplicationModule),
         typeof(SmartPowerEntityFrameworkCoreDbMigrationsModule),
         typeof(AbpAutofacModule),
-        //typeof(AbpIdentityWebModule),
+        typeof(AbpIdentityWebModule),
         typeof(AbpAccountWebIdentityServerModule),
         typeof(AbpAspNetCoreMvcUiBasicThemeModule),
         typeof(AbpAspNetCoreAuthenticationJwtBearerModule),
-        //typeof(AbpTenantManagementWebModule),
+        typeof(AbpTenantManagementWebModule),
         typeof(AbpAspNetCoreSerilogModule),
         typeof(AbpSwashbuckleModule)
         )]
     [DependsOn(typeof(AbpVirtualFileExplorerWebModule))]
+    [DependsOn(typeof(SettingUiWebModule))]
     public class SmartPowerWebModule : AbpModule
     {
         public override void PreConfigureServices(ServiceConfigurationContext context)
@@ -238,7 +240,7 @@ namespace SmartPower.Web
             app.UseAbpSerilogEnrichers();
             app.UseConfiguredEndpoints(endpoints =>
             {
-                endpoints.MapFallbackToPage("/_Host");
+                //endpoints.MapFallbackToPage("/_Host");
                 //endpoints.MapFallbackToFile("index.html");
             });
         }

@@ -1,4 +1,4 @@
-﻿using Localization.Resources.AbpUi;
+using Localization.Resources.AbpUi;
 using SmartPower.Localization;
 using Volo.Abp.Account;
 using Volo.Abp.FeatureManagement;
@@ -7,6 +7,7 @@ using Volo.Abp.Localization;
 using Volo.Abp.Modularity;
 using Volo.Abp.PermissionManagement.HttpApi;
 using Volo.Abp.TenantManagement;
+using EasyAbp.Abp.SettingUi;
 
 namespace SmartPower
 {
@@ -18,6 +19,7 @@ namespace SmartPower
         typeof(AbpTenantManagementHttpApiModule),
         typeof(AbpFeatureManagementHttpApiModule)
         )]
+    [DependsOn(typeof(SettingUiHttpApiModule))]
     public class SmartPowerHttpApiModule : AbpModule
     {
         public override void ConfigureServices(ServiceConfigurationContext context)

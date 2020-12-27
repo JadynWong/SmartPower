@@ -3,7 +3,7 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "https://localhost:44343/",
+      "applicationUrl": "https://localhost:44343",
       "sslPort": 44343
     }
   },
@@ -14,7 +14,8 @@
       "inspectUri": "{wsProtocol}://{url.hostname}:{url.port}/_framework/debug/ws-proxy?browser={browserInspectUri}",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      }
+      },
+      "launchUrl": "https://localhost:44343"
     },
     "SmartPower.Web": {
       "commandName": "Project",
@@ -24,7 +25,8 @@
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
-      "applicationUrl": "https://localhost:44343/"
+      "applicationUrl": "https://localhost:44343",
+      "launchUrl": "https://localhost:44343"
     }
   }
 }

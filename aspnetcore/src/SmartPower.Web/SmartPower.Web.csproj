@@ -23,6 +23,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Pages\_Host.cshtml.bak" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Pages\_Host.cshtml.bak" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="Pages\**\*.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -32,6 +40,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="EasyAbp.Abp.SettingUi.Web" Version="1.2.1" />
     <PackageReference Include="Serilog.AspNetCore" Version="3.2.0" />
     <PackageReference Include="Serilog.Sinks.Async" Version="1.4.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.0" />
@@ -41,7 +50,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SmartPower.Application\SmartPower.Application.csproj" />
-    <ProjectReference Include="..\SmartPower.Blazor\SmartPower.Blazor.csproj" />
     <ProjectReference Include="..\SmartPower.HttpApi\SmartPower.HttpApi.csproj" />
     <ProjectReference Include="..\SmartPower.EntityFrameworkCore.DbMigrations\SmartPower.EntityFrameworkCore.DbMigrations.csproj" />
     <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic" Version="4.0.2" />

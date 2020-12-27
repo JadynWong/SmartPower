@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using SmartPower.MultiTenancy;
 using Volo.Abp.AuditLogging;
@@ -13,6 +13,7 @@ using Volo.Abp.PermissionManagement.Identity;
 using Volo.Abp.PermissionManagement.IdentityServer;
 using Volo.Abp.SettingManagement;
 using Volo.Abp.TenantManagement;
+using EasyAbp.Abp.SettingUi;
 
 namespace SmartPower
 {
@@ -29,6 +30,7 @@ namespace SmartPower
         typeof(AbpTenantManagementDomainModule),
         typeof(AbpEmailingModule)
     )]
+    [DependsOn(typeof(SettingUiDomainModule))]
     public class SmartPowerDomainModule : AbpModule
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
