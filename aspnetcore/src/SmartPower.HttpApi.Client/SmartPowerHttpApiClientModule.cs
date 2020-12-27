@@ -6,6 +6,8 @@ using Volo.Abp.Modularity;
 using Volo.Abp.PermissionManagement;
 using Volo.Abp.TenantManagement;
 using EasyAbp.Abp.SettingUi;
+using Volo.Blogging;
+using Volo.Blogging.Admin;
 
 namespace SmartPower
 {
@@ -18,6 +20,8 @@ namespace SmartPower
         typeof(AbpFeatureManagementHttpApiClientModule)
     )]
     [DependsOn(typeof(SettingUiHttpApiClientModule))]
+    [DependsOn(typeof(BloggingHttpApiClientModule))]
+    [DependsOn(typeof(BloggingAdminHttpApiClientModule))]
     public class SmartPowerHttpApiClientModule : AbpModule
     {
         public const string RemoteServiceName = "Default";

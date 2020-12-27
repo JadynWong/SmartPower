@@ -38,6 +38,10 @@ using Volo.Abp.UI.Navigation;
 using Volo.Abp.VirtualFileSystem;
 using Volo.Abp.VirtualFileExplorer.Web;
 using EasyAbp.Abp.SettingUi.Web;
+using Volo.Blogging;
+using Volo.Blogging.Admin;
+using Volo.Abp.BlobStoring;
+using Volo.Abp.BlobStoring.FileSystem;
 
 namespace SmartPower.Web
 {
@@ -56,6 +60,9 @@ namespace SmartPower.Web
         )]
     [DependsOn(typeof(AbpVirtualFileExplorerWebModule))]
     [DependsOn(typeof(SettingUiWebModule))]
+    [DependsOn(typeof(BloggingWebModule))]
+    [DependsOn(typeof(BloggingAdminWebModule))]
+    [DependsOn(typeof(AbpBlobStoringFileSystemModule))]
     public class SmartPowerWebModule : AbpModule
     {
         public override void PreConfigureServices(ServiceConfigurationContext context)
@@ -87,6 +94,30 @@ namespace SmartPower.Web
             ConfigureNavigationServices();
             ConfigureAutoApiControllers();
             ConfigureSwaggerServices(context.Services);
+
+            Configure<BloggingUrlOptions>(options =>
+            {
+                options.RoutePrefix = null;
+            });
+
+            Configure<AbpBlobStoringOptions>(options =>
+            {
+                //options.Containers.ConfigureDefault(container =>
+                //{
+                //    container.UseFileSystem(fileSystem =>
+                //    {
+                //        fileSystem.BasePath = configuration["Blogging:FileUploadLocalFolder"];
+                //    });
+                //});
+
+                options.Containers.Configure<BloggingFileContainer>(containerConfiguration =>
+                {
+                    containerConfiguration.UseFileSystem(fileSystem =>
+                    {
+                        fileSystem.BasePath = configuration["Blogging:FileUploadLocalFolder"];
+                    });
+                });
+            });
         }
 
         private void ConfigureUrls(IConfiguration configuration)

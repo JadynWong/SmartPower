@@ -1,10 +1,12 @@
-﻿using Volo.Abp.Account;
+using Volo.Abp.Account;
 using Volo.Abp.FeatureManagement;
 using Volo.Abp.Identity;
 using Volo.Abp.Modularity;
 using Volo.Abp.ObjectExtending;
 using Volo.Abp.PermissionManagement;
 using Volo.Abp.TenantManagement;
+using Volo.Blogging;
+using Volo.Blogging.Admin;
 
 namespace SmartPower
 {
@@ -17,6 +19,8 @@ namespace SmartPower
         typeof(AbpTenantManagementApplicationContractsModule),
         typeof(AbpObjectExtendingModule)
     )]
+    [DependsOn(typeof(BloggingApplicationContractsModule))]
+    [DependsOn(typeof(BloggingAdminApplicationContractsModule))]
     public class SmartPowerApplicationContractsModule : AbpModule
     {
         public override void PreConfigureServices(ServiceConfigurationContext context)

@@ -6,6 +6,8 @@ using Volo.Abp.Modularity;
 using Volo.Abp.PermissionManagement;
 using Volo.Abp.TenantManagement;
 using EasyAbp.Abp.SettingUi;
+using Volo.Blogging;
+using Volo.Blogging.Admin;
 
 namespace SmartPower
 {
@@ -19,6 +21,8 @@ namespace SmartPower
         typeof(AbpFeatureManagementApplicationModule)
         )]
     [DependsOn(typeof(SettingUiApplicationModule))]
+    [DependsOn(typeof(BloggingApplicationModule))]
+    [DependsOn(typeof(BloggingAdminApplicationModule))]
     public class SmartPowerApplicationModule : AbpModule
     {
         public override void ConfigureServices(ServiceConfigurationContext context)

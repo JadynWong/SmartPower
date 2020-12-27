@@ -1,6 +1,4 @@
 ﻿using System.Threading.Tasks;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Localization;
 using SmartPower.Localization;
 using SmartPower.MultiTenancy;
 using Volo.Abp.TenantManagement.Web.Navigation;
@@ -29,6 +27,7 @@ namespace SmartPower.Web.Menus
             var l = context.GetLocalizer<SmartPowerResource>();
 
             context.Menu.Items.Insert(0, new ApplicationMenuItem(SmartPowerMenus.Home, l["Menu:Home"], "~/"));
+            context.Menu.Items.Insert(1, new ApplicationMenuItem(SmartPowerMenus.Blogging, l["Menu:Blogging"], "~/S"));
         }
     }
 }

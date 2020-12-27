@@ -14,6 +14,7 @@ using Volo.Abp.Validation.Localization;
 using Volo.Abp.VirtualFileSystem;
 using EasyAbp.Abp.SettingUi;
 using EasyAbp.Abp.SettingUi.Localization;
+using Volo.Blogging;
 
 namespace SmartPower
 {
@@ -28,6 +29,7 @@ namespace SmartPower
         typeof(AbpTenantManagementDomainSharedModule)
         )]
     [DependsOn(typeof(SettingUiDomainSharedModule))]
+    [DependsOn(typeof(BloggingDomainSharedModule))]
     public class SmartPowerDomainSharedModule : AbpModule
     {
         public override void PreConfigureServices(ServiceConfigurationContext context)

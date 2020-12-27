@@ -14,6 +14,7 @@ using Volo.Abp.PermissionManagement.IdentityServer;
 using Volo.Abp.SettingManagement;
 using Volo.Abp.TenantManagement;
 using EasyAbp.Abp.SettingUi;
+using Volo.Blogging;
 
 namespace SmartPower
 {
@@ -31,6 +32,7 @@ namespace SmartPower
         typeof(AbpEmailingModule)
     )]
     [DependsOn(typeof(SettingUiDomainModule))]
+    [DependsOn(typeof(BloggingDomainModule))]
     public class SmartPowerDomainModule : AbpModule
     {
         public override void ConfigureServices(ServiceConfigurationContext context)

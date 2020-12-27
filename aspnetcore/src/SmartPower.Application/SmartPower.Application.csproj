@@ -19,6 +19,8 @@
     <PackageReference Include="Volo.Abp.PermissionManagement.Application" Version="4.0.2" />
     <PackageReference Include="Volo.Abp.TenantManagement.Application" Version="4.0.2" />
     <PackageReference Include="Volo.Abp.FeatureManagement.Application" Version="4.0.2" />
+    <PackageReference Include="Volo.Blogging.Admin.Application" Version="4.0.2" />
+    <PackageReference Include="Volo.Blogging.Application" Version="4.0.2" />
   </ItemGroup>
 
 </Project>
