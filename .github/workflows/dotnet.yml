@@ -15,7 +15,7 @@ jobs:
     - uses: actions/checkout@v2
     
     - name: Install libicu-dev
-      run: apt-get update;apt-get install libicu-dev -y
+      run: sudo apt-get update;sudo apt-get install libicu-dev -y
 
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
