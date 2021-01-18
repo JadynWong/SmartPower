@@ -9,21 +9,24 @@ on:
 jobs:
   build:
 
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
     
+    - name: Install libicu-dev
+      run: apt-get update;apt-get install libicu-dev -y
+
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 5.0.101
+        dotnet-version: 5.0.102
     
     - name: Restore dependencies
-      run: dotnet restore .\aspnetcore
+      run: dotnet restore ./aspnet-core
     
     - name: Build
-      run: dotnet build .\aspnetcore --no-restore
+      run: dotnet build ./aspnet-core --no-restore
     
     - name: Test
-      run: dotnet test .\aspnetcore --no-build --verbosity normal
+      run: dotnet test ./aspnet-core --no-build --verbosity normal

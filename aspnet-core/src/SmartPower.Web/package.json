@@ -1,0 +1,10 @@
+{
+  "version": "1.0.0",
+  "name": "my-app",
+  "private": true,
+  "dependencies": {
+    "@abp/aspnetcore.mvc.ui.theme.basic": "~4.1.1",
+    "@abp/blogging": "~4.1.1",
+    "@abp/virtual-file-explorer": "~4.1.1"
+  }
+}
