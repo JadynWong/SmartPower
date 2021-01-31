@@ -15,28 +15,21 @@ using Volo.Abp.Account.Web;
 using Volo.Abp.AspNetCore.Authentication.JwtBearer;
 using Volo.Abp.AspNetCore.Mvc;
 using Volo.Abp.AspNetCore.Mvc.Localization;
-using Volo.Abp.AspNetCore.Mvc.UI;
-using Volo.Abp.AspNetCore.Mvc.UI.Bootstrap;
 using Volo.Abp.AspNetCore.Mvc.UI.Bundling;
-using Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy;
 using Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic;
 using Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic.Bundling;
 using Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared;
 using Volo.Abp.AspNetCore.Serilog;
 using Volo.Abp.Autofac;
 using Volo.Abp.AutoMapper;
-using Volo.Abp.FeatureManagement;
 using Volo.Abp.Identity.Web;
 using Volo.Abp.Localization;
 using Volo.Abp.Modularity;
-using Volo.Abp.PermissionManagement.Web;
 using Volo.Abp.Swashbuckle;
 using Volo.Abp.TenantManagement.Web;
 using Volo.Abp.UI.Navigation.Urls;
-using Volo.Abp.UI;
 using Volo.Abp.UI.Navigation;
 using Volo.Abp.VirtualFileSystem;
-using Volo.Abp.VirtualFileExplorer.Web;
 using EasyAbp.Abp.SettingUi.Web;
 using Volo.Blogging;
 using Volo.Blogging.Admin;
@@ -58,7 +51,6 @@ namespace SmartPower.Web
         typeof(AbpAspNetCoreSerilogModule),
         typeof(AbpSwashbuckleModule)
         )]
-    [DependsOn(typeof(AbpVirtualFileExplorerWebModule))]
     [DependsOn(typeof(SettingUiWebModule))]
     [DependsOn(typeof(BloggingWebModule))]
     [DependsOn(typeof(BloggingAdminWebModule))]
@@ -102,14 +94,6 @@ namespace SmartPower.Web
 
             Configure<AbpBlobStoringOptions>(options =>
             {
-                //options.Containers.ConfigureDefault(container =>
-                //{
-                //    container.UseFileSystem(fileSystem =>
-                //    {
-                //        fileSystem.BasePath = configuration["Blogging:FileUploadLocalFolder"];
-                //    });
-                //});
-
                 options.Containers.Configure<BloggingFileContainer>(containerConfiguration =>
                 {
                     containerConfiguration.UseFileSystem(fileSystem =>
@@ -174,12 +158,6 @@ namespace SmartPower.Web
                     options.FileSets.ReplaceEmbeddedByPhysical<SmartPowerWebModule>(hostingEnvironment.ContentRootPath);
                 });
             }
-            //For Blazor.Becase `Volo.Abp.AspNetCore.VirtualFileSystemWebContentFileProvider` find in wwwroot ,it's NotFound. /appsettings.json can not find
-            //Configure<AbpAspNetCoreContentOptions>(options =>
-            //{
-            //    options.AllowedExtraWebContentFolders.Add("_framework");
-            //    options.AllowedExtraWebContentFolders.Add("_content");
-            //});
         }
 
         private void ConfigureLocalizationServices()
@@ -237,7 +215,6 @@ namespace SmartPower.Web
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseWebAssemblyDebugging();//Blazor
             }
 
             app.UseAbpRequestLocalization();
@@ -248,8 +225,6 @@ namespace SmartPower.Web
             }
 
             app.UseCorrelationId();
-            app.UseBlazorFrameworkFiles();//Blazor
-            app.UseStaticFiles();//Blazor
             app.UseVirtualFiles();
             app.UseRouting();
             app.UseAuthentication();
@@ -269,11 +244,7 @@ namespace SmartPower.Web
             });
             app.UseAuditing();
             app.UseAbpSerilogEnrichers();
-            app.UseConfiguredEndpoints(endpoints =>
-            {
-                //endpoints.MapFallbackToPage("/_Host");
-                //endpoints.MapFallbackToFile("index.html");
-            });
+            app.UseConfiguredEndpoints();
         }
     }
 }

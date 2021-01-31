@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <Import Project="..\..\common.props" />
 
@@ -23,18 +23,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Remove="C:\Users\jadyn\.nuget\packages\easyabp.abp.settingui.web\1.2.1\contentFiles\any\net5.0\package-lock.json" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="Pages\_Host.cshtml.bak" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="Pages\_Host.cshtml.bak" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Update="Pages\**\*.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -51,8 +39,6 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="5.0.2" />
-    <PackageReference Include="Volo.Abp.VirtualFileExplorer.Web" Version="4.2.0" />
     <PackageReference Include="Volo.Blogging.Admin.Web" Version="4.2.0" />
     <PackageReference Include="Volo.Blogging.Web" Version="4.2.0" />
     <PackageReference Include="Volo.Abp.BlobStoring.FileSystem" Version="4.2.0" />
