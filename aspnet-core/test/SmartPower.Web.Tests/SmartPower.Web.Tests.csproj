@@ -18,7 +18,7 @@
     <PackageReference Include="HtmlAgilityPack" Version="1.11.29" />
     <ProjectReference Include="..\SmartPower.Application.Tests\SmartPower.Application.Tests.csproj" />
     <ProjectReference Include="..\..\src\SmartPower.Web\SmartPower.Web.csproj" />
-    <PackageReference Include="Volo.Abp.AspNetCore.TestBase" Version="4.1.1" />
+    <PackageReference Include="Volo.Abp.AspNetCore.TestBase" Version="4.2.0" />
   </ItemGroup>
 
   <ItemGroup>

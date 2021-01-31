@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Volo.Abp.Http.Client.IdentityModel" Version="4.1.1" />
+    <PackageReference Include="Volo.Abp.Http.Client.IdentityModel" Version="4.2.0" />
     <ProjectReference Include="..\..\src\SmartPower.HttpApi.Client\SmartPower.HttpApi.Client.csproj" />
   </ItemGroup>
 
